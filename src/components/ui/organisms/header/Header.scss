@@ -1,11 +1,15 @@
 header {
     display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
 
     &.primary {
-        background-color: rgba(200, 224, 255, 1);
+        background-color: #f9fafb;;
     }
 
-    &.secondary {
-        background-color: #f9fafb;
+    h1 {
+        font-size: 1.15rem;
+        text-align: center;
     }
+
 }

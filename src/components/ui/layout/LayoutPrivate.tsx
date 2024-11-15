@@ -1,5 +1,5 @@
 'use client'
-import Aside from "../organisms/aside/Aside";
+import Header from "../organisms/header/Header";
 interface ILayoutProps {
     children: React.ReactNode;
 }
@@ -7,7 +7,7 @@ interface ILayoutProps {
 export default function Layout({ children }: ILayoutProps) {
     return (
         <div className="flex h-screen">
-            <Aside />
+            <Header variant="primary" />
             <main className="flex flex-col flex-1 p-8 overflow-auto bg-gray-200">
                 {children}
             </main>
