@@ -11,7 +11,5 @@ interface Data {
 
 interface User {
     email: string;
-    sub:   number;
-    role:  string;
-    photo: string;
+    id: number;
 }

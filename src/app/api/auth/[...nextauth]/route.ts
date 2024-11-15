@@ -1,5 +1,6 @@
 import NextAuth, { NextAuthOptions, Session } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+import { AuthService } from "@/app/infrastructure/services";
 
 interface AuthToken {
   id?: string;
@@ -8,10 +9,9 @@ interface AuthToken {
 
 interface AuthUser {
   id: string;
-  name: string;
+  name?: string | null;
   email: string;
-  role: string;
-  photo: string;
+  photo?: string | null;
   token: string;
 }
 
@@ -21,9 +21,7 @@ interface CustomSession extends Session {
     token?: string;
     name?: string | null;
     email?: string | null;
-    role?: string | null;
     image?: string | null;
-    photo?: string | null;
   };
 }
 
@@ -32,7 +30,7 @@ export const authOptions: NextAuthOptions = {
     CredentialsProvider({
       name: "Credentials",
       credentials: {
-        username: { label: "Correo Electrónico", type: "text" },
+        email: { label: "Correo Electrónico", type: "text" },
         password: { label: "Contraseña", type: "password" },
       },
       authorize: async (credentials) => {
@@ -50,13 +48,11 @@ export const authOptions: NextAuthOptions = {
             const authService = new AuthService();
             const response = await authService.login(loginRequest);
 
-            const idString: string = response.data.user.sub.toString();
+            const idString: string = response.data.user.id.toString();
 
             return {
                 email: response.data.user.email,
                 id: idString,
-                role: response.data.user.role,
-                photo: response.data.user.photo,
                 token: response.data.access_token,
             } as AuthUser;
         } catch (error) {
@@ -77,8 +73,6 @@ export const authOptions: NextAuthOptions = {
         token.id = authUser.id;
         token.name = authUser.name;
         token.email = authUser.email;
-        token.role = authUser.role;
-        token.photo = authUser.photo;
         token.token = authUser.token;
       }
       return token;

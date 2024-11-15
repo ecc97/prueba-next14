@@ -4,6 +4,7 @@ import FormField from '../../molecules/common/FormField'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
+import { FaCarRear, FaUnlockKeyhole } from "react-icons/fa6";
 import { signIn } from 'next-auth/react'
 import { useRouter } from 'next/navigation' 
 
@@ -34,7 +35,7 @@ export default function LoginForm() {
                 handleError(JSON.parse(result.error))   
                 return
             }
-            router.push('/dashboard/projects')
+            router.push('/dashboard/vehicles')
         } catch (error) {
            console.error(error)
         }
@@ -54,15 +55,21 @@ export default function LoginForm() {
         }
     }
     return (
-        <form className="w-full max-w-sm mx-auto p-4 space-y-4" onSubmit={handleSubmit(handleLogin)}>
-            <h2 className="text-2xl font-semibold text-center">Iniciar Sesión</h2>
+        <form className="w-full max-w-md     mx-auto p-4 space-y-4" onSubmit={handleSubmit(handleLogin)}>
+            <div className="flex items-center justify-center">
+                <FaCarRear className="w-12 h-12 text-indigo-400" />
+            </div>
+            <h2 className="text-2xl font-semibold text-center text-indigo-400">Transport Solutions S.A</h2>
+            <p className="text-sm text-gray-600 font-bold">
+                Inicia sesión en tu cuenta y gestiona tu flota de vehículos
+            </p>
             <FormField<ILoginRequest>
                 control={control}
                 type="email"
                 label="Correo Electrónico"
                 name="email"
                 error={errors.email}
-                placeholder="Ingresa tu correo"
+                placeholder="tuempresa@dominio.com"
             />
             <FormField<ILoginRequest>
                 control={control}
@@ -70,11 +77,16 @@ export default function LoginForm() {
                 label="Contraseña"
                 name="password"
                 error={errors.password}
-                placeholder="Ingresa tu contraseña"
+                placeholder="**********"
             />
-            <button type="submit" className="w-full py-2 px-4 bg-blue-500 text-white rounded-lg font-medium hover:bg-blue-500">
+            <button type="submit" className="w-full flex items-center justify-center gap-4 py-2 px-4 bg-indigo-400 text-white rounded-lg font-medium hover:bg-blue-500">
+                <FaUnlockKeyhole />
                 Iniciar Sesión
             </button>
+
+            <div className="flex items-center justify-center mt-4">
+                <span className="text-sm text-gray-600 font-bold text-center">¿Problemas para iniciar sesión? Contacta al administrador del sistema</span>
+            </div>
         </form>
     )
 }

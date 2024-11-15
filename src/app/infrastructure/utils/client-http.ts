@@ -1,7 +1,7 @@
 import { authOptions } from "@/app/api/auth";
 import { DefaultSession, getServerSession } from "next-auth";
 
-const defaultBaseUrl = "https://communnityvolunteering-production.up.railway.app/api/v1";
+const defaultBaseUrl = "https://maintenancesystembc-production.up.railway.app/api/v1";
 
 interface Session extends DefaultSession {
     user: {
@@ -9,9 +9,6 @@ interface Session extends DefaultSession {
         token?: string;
         name?: string | null;
         email?: string | null;
-        image?: string | null;
-        photo?: string | null;
-        role?: string | null;
     };
 }
 export class HttpClient {
