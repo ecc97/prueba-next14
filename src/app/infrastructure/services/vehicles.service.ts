@@ -17,15 +17,16 @@ export class VehiclesService implements PVehicle {
             throw error
         }
     }
-    // async createProject(req: IProjectRequest): Promise<IProjectResponse> {
-    //     try {
-    //         const response = await this.httpClient.post<IProjectResponse, IProjectRequest>('projects', req)
-    //         return response;
-    //     } catch (error) {
-    //         console.log('Error creando proyecto:', error)
-    //         throw error
-    //     }
-    // }   
+    async addVehicle(req: FormData): Promise<IVehiclePostResponse> {
+        try {
+            const formData = true
+            const response = await this.httpClient.post<IVehiclePostResponse, FormData>('vehicles', req, formData)
+            return response;
+        } catch (error) {
+            console.log('Error añadiendo vehículo:', error)
+            throw error
+        }
+    }   
     // async getProjectById(id: number): Promise<IProjectResponse> {
     //     try {
     //         const response = await this.httpClient.get<IProjectResponse>(`projects/${id}`)

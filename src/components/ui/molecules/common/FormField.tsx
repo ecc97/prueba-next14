@@ -16,7 +16,7 @@ interface FormFieldProps<T extends FieldValues> {
 
 const FormField = <T extends FieldValues>({ label, type, name, control, error, id, placeholder }: FormFieldProps<T>) => {
     return (
-        <div className='w-full flex flex-col mb-4'>
+        <div className='flex flex-col flex-1 mb-4'>
             <label htmlFor={id || label.toLowerCase()} className={`text-sm font-medium`}>{label}</label>
             <Controller
                 name={name}

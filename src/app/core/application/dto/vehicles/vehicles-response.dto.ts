@@ -21,3 +21,19 @@ interface Metadata {
     totalPages:   number;
     currentPage:  number;
 }
+
+//POST response
+interface IVehiclePostResponse {
+    statusCode: number;
+    message:    string;
+    data:       VehiclePost;
+}
+
+interface VehiclePost {
+    make:         string;
+    model:        string;
+    year:         number;
+    licensePlate: string;
+    photo:        string;
+    id:           number;
+}
