@@ -1,32 +1,31 @@
-import { IProjectRequest, IProjectsResponse, IProjectResponse, IProjectDeleteResponse } from "@/app/core/application/dto";
-import { PProject } from "@/app/core/application/ports";
+import { PVehicle } from "@/app/core/application/ports/vehicles.port";
 import { HttpClient } from "../utils/client-http";
 
-export class ProjectsService implements PProject {
+export class VehiclesService implements PVehicle {
     private httpClient: HttpClient
 
     constructor() {
         this.httpClient = new HttpClient()
     }
-    async getProjects(page?: number, size?: number): Promise<IProjectsResponse> {
+    async getAllVehicles(page?: number, size?: number): Promise<IVehiclesResponse> {
         try {
-            const url = page && size? `projects?page=${page}&size=${size}` : 'projects'
-            const response = this.httpClient.get<IProjectsResponse>(url)
+            const url = page && size? `vehicles?page=${page}&size=${size}` : 'vehicles'
+            const response = this.httpClient.get<IVehiclesResponse>(url)
             return response;
         } catch (error) {
-            console.log('Error obteniendo proyectos:', error)
+            console.log('Error obteniendo vehículos:', error)
             throw error
         }
     }
-    async createProject(req: IProjectRequest): Promise<IProjectResponse> {
-        try {
-            const response = await this.httpClient.post<IProjectResponse, IProjectRequest>('projects', req)
-            return response;
-        } catch (error) {
-            console.log('Error creando proyecto:', error)
-            throw error
-        }
-    }   
+    // async createProject(req: IProjectRequest): Promise<IProjectResponse> {
+    //     try {
+    //         const response = await this.httpClient.post<IProjectResponse, IProjectRequest>('projects', req)
+    //         return response;
+    //     } catch (error) {
+    //         console.log('Error creando proyecto:', error)
+    //         throw error
+    //     }
+    // }   
     // async getProjectById(id: number): Promise<IProjectResponse> {
     //     try {
     //         const response = await this.httpClient.get<IProjectResponse>(`projects/${id}`)
@@ -44,15 +43,15 @@ export class ProjectsService implements PProject {
     //         throw error
     //     }
     // }
-    async deleteProject(id: number): Promise<IProjectDeleteResponse> {
-        try {
-            const response = await this.httpClient.delete<IProjectDeleteResponse>(`projects/${String(id)}`)
-            return response;
-        } catch (error) {
-            console.log('Error eliminando proyecto:', error)
-            throw error
-        }
-    }
+    // async deleteProject(id: number): Promise<IProjectDeleteResponse> {
+    //     try {
+    //         const response = await this.httpClient.delete<IProjectDeleteResponse>(`projects/${String(id)}`)
+    //         return response;
+    //     } catch (error) {
+    //         console.log('Error eliminando proyecto:', error)
+    //         throw error
+    //     }
+    // }
     // async getProjectReport(): Promise<ArrayBuffer> {
     //     try {
     //         const response = await this.httpClient.get<ArrayBuffer>('projects/report/download', true)

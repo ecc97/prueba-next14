@@ -8,7 +8,7 @@ export default function Layout({ children }: ILayoutProps) {
     return (
         <div className="flex h-screen">
             <Header variant="primary" />
-            <main className="flex flex-col flex-1 p-8 overflow-auto bg-gray-200">
+            <main className="flex flex-col flex-1 p-8 overflow-auto bg-gray-100">
                 {children}
             </main>
         </div>
