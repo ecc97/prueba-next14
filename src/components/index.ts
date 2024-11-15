@@ -1,4 +1,5 @@
 export * from './ui/templates/vehicles/VehiclesTemplate';
+export * from './ui/templates/maintenance/Maintenance';
 export * from './ui/templates/auth/LoginTemplate';
 export * from './ui/organisms/table/Table';
 export * from './ui/organisms/navbar/Navbar';

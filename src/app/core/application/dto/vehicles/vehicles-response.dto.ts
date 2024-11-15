@@ -37,3 +37,13 @@ interface VehiclePost {
     photo:        string;
     id:           number;
 }
+
+interface IVehicleDelResponse {
+    statusCode: number;
+    message:    string;
+    data:       Data;
+}
+
+interface Data {
+    message: string;
+}

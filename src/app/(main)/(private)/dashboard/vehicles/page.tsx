@@ -15,7 +15,7 @@ export default async function VehiclesPage({ searchParams }: IParamsProps) {
     const page = searchParams.page ? parseInt(searchParams.page) : 1;
     const size = searchParams.size ? parseInt(searchParams.size) : 10;
     const vehicles = await useVehiclesService.getAllVehicles(page, size)
-    console.log(vehicles)
+    // console.log(vehicles)
     return (
         <VehiclesTemplate dataVehicles={vehicles} />
     )

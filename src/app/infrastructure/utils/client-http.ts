@@ -84,5 +84,14 @@ export class HttpClient {
 
         return this.handleResponse(response);
     }
+    async patch<T, B>(url: string, body: B): Promise<T> {
+        const headers = await this.getHeader();
+        const response = await fetch(`${this.baseUrl}/${url}`, {
+            headers: headers,
+            method: "PATCH",
+            body: JSON.stringify(body),
+        });
+        return this.handleResponse(response);
+    }
 
 }
