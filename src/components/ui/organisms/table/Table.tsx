@@ -1,5 +1,8 @@
 import React from 'react'
 import Button from '../../atoms/button/Button'
+import { BiEdit } from "react-icons/bi";
+import { GoTrash } from "react-icons/go";
+import { FaHistory } from "react-icons/fa";
 
 
 interface TableVehiclesProps {
@@ -29,9 +32,16 @@ export default function Table({vehicles} : TableVehiclesProps) {
                         <td className="px-6 py-4 whitespace-nowrap">{vehicle.model}</td>
                         <td className="px-6 py-4 whitespace-nowrap">{vehicle.year}</td>
                         <td className="px-6 py-4 whitespace-nowrap">{vehicle.licensePlate}</td>
-                        <td className="px-6 py-4 whitespace-nowrap flex gap-2">
-                            <Button className="text-blue-600 hover:text-blue-900">Editar</Button>
-                            <Button className="text-red-600 hover:text-red-900">Eliminar</Button>
+                        <td className="px-6 py-4 whitespace-nowrap flex">
+                            <Button className="text-gray-400" size='small'>
+                                <BiEdit />
+                            </Button>
+                            <Button className="text-gray-400" size='small'>
+                                <FaHistory />
+                            </Button>
+                            <Button className="text-gray-400" size='small'>
+                                <GoTrash />
+                            </Button>
                         </td>
                     </tr>
                 ))}

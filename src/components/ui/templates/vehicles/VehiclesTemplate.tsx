@@ -4,6 +4,7 @@ import Button from '../../atoms/button/Button'
 import Filters from '../../molecules/filters/Filters'
 import BtnActions from '../../molecules/btnGroupActions/BtnActions'
 import Table from '../../organisms/table/Table'
+import Pagination from '../../molecules/common/Pagination'
 import './Vehicles.scss'
 
 interface VehiclesTemplateProps {
@@ -24,18 +25,11 @@ export default function VehiclesTemplate({ dataVehicles }: VehiclesTemplateProps
 
             {/* Tabla */}
             <div className="content-table">
-                <Table vehicles={vehicles}/>
+                <Table vehicles={vehicles} />
             </div>
 
             {/* Paginación */}
-            <div className="flex justify-center mt-6">
-                <nav className="pagination">
-                    <button className="pagination-btn">1</button>
-                    <button className="pagination-btn">2</button>
-                    <button className="pagination-btn">3</button>
-                    <button className="pagination-btn">4</button>
-                </nav>
-            </div>
+            <Pagination data={dataVehicles} />
         </div>
     )
 }
